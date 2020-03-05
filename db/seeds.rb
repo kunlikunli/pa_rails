@@ -7,23 +7,30 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'json'
 
-# courses = JSON.parse(File.read('db/course.json'))
-
-# courses.each do |course|
-#     Course.create(name: course['name'], code: course['code'], description: course['description'], subject:course['subject'])
-# end
-
-instructor = JSON.parse(File.read('db/instructor.json'))
-
-# instructor.each do |i|
-    # Instructor.create(last: i['last'], first: i['first'], email: i['email'], instructor_id: i['id'])
-# end
-
 subject = JSON.parse(File.read('db/subject.json'))
 
 subject.each do |s|
-    puts s['name']
-    id = s['id'].to_s[5..8].to_i
-    puts id
-    Subject.create(name: s['name'], subject_id:id)
+    
+    id = s['id']
+    
+    Subject.create(name: s['name'], id:id)
 end
+
+courses = JSON.parse(File.read('db/course.json'))
+
+courses.each do |course|
+    Course.create(name: course['name'], id: course['code'], description: course['description'])
+    
+    course['subjects'].each do |i|
+       
+        CourseSubject.create!(course_id: course['code'], subject_id: i['id'])
+    end
+
+end
+
+instructor = JSON.parse(File.read('db/instructor.json'))
+
+instructor.each do |i|
+    Instructor.create(last: i['last'], first: i['first'], email: i['email'], instructor_id: i['id'])
+end
+

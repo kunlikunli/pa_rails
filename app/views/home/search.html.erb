@@ -1,0 +1,6 @@
+<%= form_with(url: "/result",local:true, method: "get") do %>
+  <%= select_tag(:subject, options_for_select(@option)) %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %> 
+<% end %>

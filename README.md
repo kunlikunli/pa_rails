@@ -1,5 +1,8 @@
 # README
 
+Link for heroku: https://dry-garden-68881.herokuapp.com/
+Link for private Github: https://github.com/kunlikunli/pa_rails
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

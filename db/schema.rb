@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_192304) do
+ActiveRecord::Schema.define(version: 2020_03_05_044546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "courses", force: :cascade do |t|
+  create_table "course_subjects", force: :cascade do |t|
+    t.string "course_id"
+    t.string "subject_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses", id: false, force: :cascade do |t|
     t.string "name"
-    t.string "code"
+    t.string "id"
     t.string "description"
-    t.string "subject"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,9 +39,24 @@ ActiveRecord::Schema.define(version: 2020_02_12_192304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "subjects", force: :cascade do |t|
+  create_table "subjects", id: false, force: :cascade do |t|
     t.string "name"
-    t.integer "subject_id"
+    t.string "id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.string "user_id"
+    t.string "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

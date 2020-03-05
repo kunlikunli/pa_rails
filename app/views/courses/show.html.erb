@@ -7,7 +7,7 @@
 
 <p>
   <strong>Code:</strong>
-  <%= @course.code %>
+  <%= @course.id %>
 </p>
 
 <p>
@@ -15,10 +15,6 @@
   <%= @course.description %>
 </p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @course.subject %>
-</p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
