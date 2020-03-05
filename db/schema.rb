@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 2020_03_05_044546) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.string "user_id"
+    t.string "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "instructors", force: :cascade do |t|
     t.string "last"
     t.string "first"
@@ -50,13 +57,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_044546) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "enrollments", force: :cascade do |t|
-    t.string "user_id"
-    t.string "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

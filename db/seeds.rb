@@ -13,17 +13,17 @@ subject.each do |s|
     
     id = s['id']
     
-    Subject.create(name: s['name'], id:id)
+    Subject.new(name: s['name'], id:id).save(validate: false)
 end
 
 courses = JSON.parse(File.read('db/course.json'))
 
 courses.each do |course|
-    Course.create(name: course['name'], id: course['code'], description: course['description'])
+    Course.new(name: course['name'], id: course['code'], description: course['description']).save(validate: false)
     
     course['subjects'].each do |i|
        
-        CourseSubject.create!(course_id: course['code'], subject_id: i['id'])
+        CourseSubject.new(course_id: course['code'], subject_id: i['id']).save(validate: false)
     end
 
 end
